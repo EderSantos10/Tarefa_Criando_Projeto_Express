@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script>
+        function passClassInfo(event) {
+            event.preventDefault();
+            const urlParams = new URLSearchParams(window.location.search);
+            const username = urlParams.get('username');
+            const password = urlParams.get('password');
+            const classe = document.querySelector('input[name="classe"]:checked').value;
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/users/save';
+            
+            const usernameField = document.createElement('input');
+            usernameField.type = 'hidden';
+            usernameField.name = 'username';
+            usernameField.value = username;
+            form.appendChild(usernameField);
+
+            const passwordField = document.createElement('input');
+            passwordField.type = 'hidden';
+            passwordField.name = 'password';
+            passwordField.value = password;
+            form.appendChild(passwordField);
+
+            const classeField = document.createElement('input');
+            classeField.type = 'hidden';
+            classeField.name = 'classe';
+            classeField.value = classe;
+            form.appendChild(classeField);
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Escolha sua Classe!</h1>
+        <form onsubmit="passClassInfo(event)">
+            <label>
+                <input type="radio" name="classe" value="Arqueiro" required>
+                Arqueiro
+            </label>
+            <label>
+                <input type="radio" name="classe" value="Guerreiro">
+                Guerreiro
+            </label>
+            <label>
+                <input type="radio" name="classe" value="Paladino">
+                Paladino
+            </label>
+            <label>
+                <input type="radio" name="classe" value="Bruxo">
+                Bruxo
+            </label>
+            <label>
+                <input type="radio" name="classe" value="Sacerdote">
+                Sacerdote
+            </label>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>

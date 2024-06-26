@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar usuário</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const returnUrl = new URLSearchParams(window.location.search).get('returnUrl') || '/';
+            document.querySelector('form').action += `?returnUrl=${returnUrl}`;
+        });
+    </script>
+</head>
+<body>
+    <h1>Adicionar usuário</h1>
+    <form action="/users/save" method="POST">
+        <div>
+            <input type="text" name="username" placeholder="Digite um nome" required />
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="Digite uma senha" required />
+        </div>
+        <div>
+            <input type="submit" value="Cadastrar" />
+        </div>
+    </form>
+</body>
+</html>
